@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HangboardTimer</string>
+    <string name="buttonUpperLeftText">HangBoard Interval Training</string>
 </resources>

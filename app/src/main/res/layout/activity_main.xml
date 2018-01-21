@@ -20,18 +20,16 @@
 
             <Button
                 android:id="@+id/button1"
+                android:text="@string/buttonUpperLeftText"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
-                android:background="@color/colorButtonTopLeft"
                 android:layout_weight="2"
-                android:text="Button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/button2"
-                android:background="@color/colorButtonTopRight"
                 android:layout_width="0dp"
                 android:layout_margin="2dp"
                 android:layout_height="match_parent"
@@ -50,7 +48,6 @@
 
             <Button
                 android:id="@+id/button3"
-                android:background="@color/colorButtonBottomLeft"
                 android:layout_width="0dp"
                 android:layout_margin="2dp"
                 android:layout_height="match_parent"
@@ -67,10 +64,8 @@
                 android:id="@+id/button4"
                 android:layout_width="0dp"
                 android:layout_margin="2dp"
-                android:background="@color/colorButtonBottomRight"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:lay
                 android:text="Button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
