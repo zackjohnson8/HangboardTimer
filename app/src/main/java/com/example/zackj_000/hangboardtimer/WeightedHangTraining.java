@@ -8,12 +8,12 @@ import android.support.annotation.Nullable;
  * Created by zackj_000 on 1/24/2018.
  */
 
-public class WeightTraining extends Activity{
+public class WeightedHangTraining extends Activity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weight_training);
+        setContentView(R.layout.activity_weightedhang_training);
 
     }
 }
