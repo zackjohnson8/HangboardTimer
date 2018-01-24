@@ -21,6 +21,12 @@
             android:name=".BasicTimerActivity"
             android:label="@string/app_name">
         </activity>
+
+        <activity
+            android:name=".IntervalTraining"
+            android:label="@string/app_name">
+        </activity>
+
     </application>
 
 </manifest>
