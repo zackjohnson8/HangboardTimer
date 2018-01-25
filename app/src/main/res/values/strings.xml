@@ -4,4 +4,7 @@
     <string name="buttonUpperRightText">Weight Training</string>
     <string name="buttonBottomLeftText">3-6-9 Training</string>
     <string name="buttonBottomRightText">Basic Timer</string>
+    <string name="startButtonString">START</string>
+    <string name="stopButtonString">STOP</string>
+    <string name="resetButtonString">RESET</string>
 </resources>
