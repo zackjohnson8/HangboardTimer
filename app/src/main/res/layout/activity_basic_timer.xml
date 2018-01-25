@@ -24,13 +24,14 @@
             >
 
             <TextView
+                android:id="@+id/basicTimerCountTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="100sp"
                 android:layout_gravity="center"
                 android:textSize="100sp"
                 android:textColor="#ffffff"
-                android:text="00:00.00"
+                android:text="0:00.00"
                 />
 
         </LinearLayout>
