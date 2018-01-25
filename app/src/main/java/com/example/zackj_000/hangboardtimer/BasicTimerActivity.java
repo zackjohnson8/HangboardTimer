@@ -19,6 +19,8 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
     private TextView clockTimeText;
     Handler customHandler = new Handler();
 
+
+    int extraMinutesTest = 0;
     long startTime = 0L;
     long timeInMilli = 0L;
     long timeSwapBuff = 0L;
@@ -30,7 +32,7 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
             timeInMilli = SystemClock.uptimeMillis()-startTime;
             updateTime = timeSwapBuff+timeInMilli;
             int secs = (int)updateTime/1000;
-            int mins=secs/60;
+            int mins=(secs/60)+extraMinutesTest;
             secs%=60;
             int milliseconds = (int)(updateTime%1000);
 
