@@ -19,8 +19,6 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_timer);
 
-        Log.d("DEBUG", "HOW ABOUT NOW?");
-
         buttonStart = findViewById(R.id.basicTimerButtonStart);
         //buttonStart.setOnClickListener(this);
 
@@ -36,15 +34,31 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
         switch(v.getId())
         {
             case R.id.basicTimerButtonStart:
+                startTimer();
                 //buttonStart.setBackgroundColor(Color.BLUE);
-                // Intent to go back
-                Intent MainActivity = new Intent(BasicTimerActivity.this, MainActivity.class);
-                startActivity(MainActivity);
+                //Intent to go back
+                //Intent MainActivity = new Intent(BasicTimerActivity.this, MainActivity.class);
+                //startActivity(MainActivity);
                 break;
 
+            case R.id.basicTimerButtonStop:
+                stopTimer();
+                break;
             default:
                 break;
         }
+
+    }
+
+    private void startTimer()
+    {
+
+
+    }
+
+    private void stopTimer()
+    {
+
 
     }
 
