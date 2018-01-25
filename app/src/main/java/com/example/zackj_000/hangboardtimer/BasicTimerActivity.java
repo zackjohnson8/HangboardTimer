@@ -1,6 +1,7 @@
 package com.example.zackj_000.hangboardtimer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.util.Log;
 
-public class BasicTimerActivity extends Activity
+public class BasicTimerActivity extends Activity implements View.OnClickListener
 {
 
     private Button buttonStart;
@@ -20,27 +21,25 @@ public class BasicTimerActivity extends Activity
 
         Log.d("DEBUG", "HOW ABOUT NOW?");
 
-        buttonStart = findViewById(R.id.buttonStart);
+        buttonStart = findViewById(R.id.basicTimerButtonStart);
         //buttonStart.setOnClickListener(this);
 
-        buttonStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonStart.setBackgroundColor(Color.BLUE);
-            }
-        });
+        buttonStart.setOnClickListener(this);
+
     }
 
-    /*
+
     @Override
     public void onClick(View v)
     {
 
         switch(v.getId())
         {
-            case R.id.buttonStart:
-                buttonStart.setBackgroundColor(Color.BLUE);
-                Log.d("DEBUG","The button was clicked");
+            case R.id.basicTimerButtonStart:
+                //buttonStart.setBackgroundColor(Color.BLUE);
+                // Intent to go back
+                Intent MainActivity = new Intent(BasicTimerActivity.this, MainActivity.class);
+                startActivity(MainActivity);
                 break;
 
             default:
@@ -48,6 +47,6 @@ public class BasicTimerActivity extends Activity
         }
 
     }
-    */
+
 
 }

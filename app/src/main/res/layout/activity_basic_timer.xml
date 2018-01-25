@@ -22,11 +22,6 @@
             android:layout_alignParentTop="true"
             >
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-
         </LinearLayout>
 
         <LinearLayout
@@ -37,7 +32,7 @@
             android:background="@color/colorPrimary">
 
             <Button
-                android:id="@+id/buttonStart"
+                android:id="@+id/basicTimerButtonStart"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"
@@ -51,7 +46,7 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <Button
-                android:id="@+id/buttonStop"
+                android:id="@+id/basicTimerButtonStop"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="2dp"

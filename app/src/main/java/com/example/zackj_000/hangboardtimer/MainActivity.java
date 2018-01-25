@@ -40,13 +40,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId())
         {
             case R.id.button1:
-                setContentView(R.layout.activity_interval_training);
+                /*
+                Intent IntervalTraining = new Intent(MainActivity.this, IntervalTraining.class);
+                startActivity(IntervalTraining);
+                */
                 break;
             case R.id.button2:
-                setContentView(R.layout.activity_weightedhang_training);
+                /*
+                Intent WeightTrainingActivity = new Intent(MainActivity.this, WeightTraining.class);
+                startActivity(WeightTrainingActivity);
+                */
                 break;
             case R.id.button3:
-                setContentView(R.layout.activity_weight_training);
+                /*
+                Intent WeightedHangTrainingActivity = new Intent(MainActivity.this, WeightedHangTraining.class);
+                startActivity(WeightedHangTrainingActivity);
+                */
                 break;
             case R.id.button4:
                 Intent BasicTimerTrainer = new Intent(MainActivity.this, BasicTimerActivity.class);
