@@ -12,10 +12,13 @@ import android.widget.Button;
 import android.util.Log;
 import android.widget.TextView;
 
+//TODO(ZACK): Build out the directory buttons into a bottom layout.
+
 public class BasicTimerActivity extends Activity implements View.OnClickListener
 {
 
     private Button buttonStart;
+    private Button buttonStop;
     private TextView clockTimeText;
     Handler customHandler = new Handler();
 
@@ -25,6 +28,7 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
     long timeInMilli = 0L;
     long timeSwapBuff = 0L;
     long updateTime = 0L;
+    boolean timerRunning = false;
 
     Runnable updateTimerThread = new Runnable() {
         @Override
@@ -49,9 +53,11 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
         setContentView(R.layout.activity_basic_timer);
 
         buttonStart = findViewById(R.id.basicTimerButtonStart);
+        buttonStop = findViewById(R.id.basicTimerButtonStop);
         clockTimeText = findViewById(R.id.basicTimerCountTextView);
 
         buttonStart.setOnClickListener(this);
+        buttonStop.setOnClickListener(this);
 
     }
 
@@ -63,13 +69,29 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
         switch(v.getId())
         {
             case R.id.basicTimerButtonStart:
-                startTimer();
+                if(!timerRunning) {
+                    timerRunning = !timerRunning;
+                    buttonStop.setText("STOP");
+                    startTimer();
+                }else
+                {
+                    clearTimer();
+                    startTimer();
+                }
                 //Intent MainActivity = new Intent(BasicTimerActivity.this, MainActivity.class);
                 //startActivity(MainActivity);
                 break;
 
             case R.id.basicTimerButtonStop:
-                stopTimer();
+                if(timerRunning) {
+                    timerRunning = !timerRunning;
+                    buttonStop.setText("RESET");
+                    stopTimer();
+                }else
+                {
+                    clearTimer();
+                    clockTimeText.setText("0:00.000");
+                }
                 break;
             default:
                 break;
@@ -90,6 +112,16 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
 
         timeSwapBuff+=timeInMilli;
         customHandler.removeCallbacks(updateTimerThread);
+
+    }
+
+    private void clearTimer()
+    {
+
+        startTime = 0L;
+        timeInMilli = 0L;
+        timeSwapBuff = 0L;
+        updateTime = 0L;
 
     }
 
