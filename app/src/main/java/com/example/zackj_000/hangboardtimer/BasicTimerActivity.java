@@ -41,14 +41,14 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
             int milliseconds = (int)(updateTime%1000);
 
 
-            clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+":"+String.format("%03d",milliseconds));
+            clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
             customHandler.postDelayed(this,0);
         }
     };
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_timer);
 

@@ -19,21 +19,20 @@
 
         <activity
             android:name=".BasicTimerActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            >
 
-            android:parentActivityName="com.example.zackj_000.hangboardtimer.MainActivity" >
-            <!-- The meta-data element is needed for versions lower than 4.1 -->
-            <meta-data
+                <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.zackj_000.hangboardtimer.MainActivity" />
+                android:value="com.example.zackj_000.hangboardtimer.MainActivity"
+                />
         </activity>
 
         <activity
             android:name=".IntervalTraining"
             android:label="@string/app_name">
 
-            android:parentActivityName="com.example.zackj_000.hangboardtimer.MainActivity" >
-            <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.zackj_000.hangboardtimer.MainActivity" />
@@ -43,8 +42,6 @@
             android:name=".WeightTraining"
             android:label="@string/app_name">
 
-            android:parentActivityName="com.example.zackj_000.hangboardtimer.MainActivity" >
-            <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.zackj_000.hangboardtimer.MainActivity" />
@@ -54,8 +51,6 @@
             android:name=".WeightedHangTraining"
             android:label="@string/app_name">
 
-            android:parentActivityName="com.example.zackj_000.hangboardtimer.MainActivity" >
-            <!-- The meta-data element is needed for versions lower than 4.1 -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.zackj_000.hangboardtimer.MainActivity" />

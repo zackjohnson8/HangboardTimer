@@ -2,16 +2,85 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Layout_Constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.zackj_000.hangboardtimer.BasicTimerActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:id="@+id/basicTimerMainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
+        <LinearLayout
+            android:id="@+id/navigationBottomLayer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".3"
+            android:padding="0dp"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/buttonStopWatch"
+                android:text="<-"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin=".5dp"
+                android:padding="0dp"
+                android:background="@drawable/start_stop_button"
+                />
+
+            <LinearLayout
+                android:id="@+id/BufferLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:padding="0dp"
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal"></LinearLayout>
+
+            <!--
+            <Button
+                android:id="@+id/buttonIntervalTraining"
+                android:text="Inter"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_margin=".5dp"
+                android:padding="0dp"
+                android:background="@drawable/start_stop_button"
+                />
+
+
+            <Button
+                android:id="@+id/buttonWeightTraining"
+                android:text="W"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_margin=".5dp"
+                android:padding="0dp"
+                android:background="@drawable/start_stop_button"
+                />
+
+            <Button
+                android:id="@+id/buttonMaxWeightHangTraining"
+                android:text="Max"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_margin=".5dp"
+                android:padding="0dp"
+                android:background="@drawable/start_stop_button"
+                />
+                -->
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/topLinearLayout"
@@ -78,62 +147,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/navigationBottomLayer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:padding="0dp"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal"
-            >
-
-            <Button
-                android:id="@+id/buttonStopWatch"
-                android:text="H"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-            <Button
-                android:id="@+id/buttonIntervalTraining"
-                android:text="Inter"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-
-            <Button
-                android:id="@+id/buttonWeightTraining"
-                android:text="W"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-            <Button
-                android:id="@+id/buttonMaxWeightHangTraining"
-                android:text="Max"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-        </LinearLayout>
 
     </LinearLayout>
 
