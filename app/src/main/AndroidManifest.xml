@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+                  android:label="@string/app_name"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,13 +22,14 @@
         <activity
             android:name=".BasicTimerActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme"
             >
 
-                <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.zackj_000.hangboardtimer.MainActivity"
-                />
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+
         </activity>
 
         <activity

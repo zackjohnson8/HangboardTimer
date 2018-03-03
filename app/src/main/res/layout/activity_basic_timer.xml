@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Layout_Constraint"
+    android:id="@+id/Layout_Constraint_Timer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -19,7 +19,7 @@
             android:id="@+id/navigationBottomLayer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".3"
+            android:layout_weight=".5"
             android:padding="0dp"
             android:background="@color/colorPrimary"
             android:orientation="horizontal"
@@ -27,7 +27,8 @@
 
             <Button
                 android:id="@+id/buttonStopWatch"
-                android:text="<-"
+                android:textColor="#ffffff"
+                android:textSize="40sp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -43,7 +44,9 @@
                 android:layout_weight="5"
                 android:padding="0dp"
                 android:background="@color/colorPrimary"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal">
+
+            </LinearLayout>
 
             <!--
             <Button
@@ -163,4 +166,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
+
 </android.support.constraint.ConstraintLayout>

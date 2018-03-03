@@ -7,4 +7,5 @@
     <string name="startButtonString">START</string>
     <string name="stopButtonString">STOP</string>
     <string name="resetButtonString">RESET</string>
+    <string name="backButton"></string>
 </resources>
