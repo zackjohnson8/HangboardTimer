@@ -25,7 +25,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:fontFamily="@font/vollkornitalic"
+
                 android:background="@drawable/start_stop_button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:background="@drawable/start_stop_button"
-                android:fontFamily="@font/vollkornitalic"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/buttonBottomLeftText"
-                android:fontFamily="@font/vollkornitalic"
+
                 android:background="@drawable/start_stop_button"
                 />
 
@@ -65,7 +65,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:text="@string/buttonBottomRightText"
-                android:fontFamily="@font/vollkornitalic"
+
                 android:background="@drawable/start_stop_button"
                 />
         </LinearLayout>

@@ -1,10 +1,14 @@
 package com.example.zackj_000.hangboardtimer;
 
 import android.content.Intent;
+import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.graphics.Typeface;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +34,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonUpperRight.setOnClickListener(this);
         buttonBottomLeft.setOnClickListener(this);
         buttonBottomRight.setOnClickListener(this);
+
+
+        TextView newFont = new TextView(MainActivity.this);
+        Typeface face = Typeface.createFromAsset(getAssets(),
+                "fonts/VollkornItalic.ttf");
+        newFont.setTypeface(face);
+
 
     }
 
