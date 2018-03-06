@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 //TODO(ZACK): Build out the directory buttons into a bottom layout.
-
-public class BasicTimerActivity extends AppCompatActivity implements View.OnClickListener
+//AppCompatActivity
+public class BasicTimerActivity extends Activity implements View.OnClickListener
 {
 
     private Button buttonStart;
