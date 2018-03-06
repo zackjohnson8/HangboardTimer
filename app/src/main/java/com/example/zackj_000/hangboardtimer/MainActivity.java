@@ -2,13 +2,15 @@ package com.example.zackj_000.hangboardtimer;
 
 import android.content.Intent;
 import android.app.ActionBar;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.graphics.Typeface;
-
+import android.graphics.Color;
+import android.widget.RelativeLayout;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -36,10 +38,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonBottomRight.setOnClickListener(this);
 
 
-        TextView newFont = new TextView(MainActivity.this);
-        Typeface face = Typeface.createFromAsset(getAssets(),
-                "fonts/VollkornItalic.ttf");
-        newFont.setTypeface(face);
+
+        TextView tv = new TextView(getApplicationContext());
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setText("Hello World");
+        tv.setTextColor(Color.parseColor("#FFFFFF"));
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/VollkornItalic.ttf");
+        tv.setTypeface(typeface);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(tv);
+
+        //ActionBar actionbar = getActionBar();
+        //TextView newFont = new TextView(MainActivity.this);
+        //Typeface face = Typeface.createFromAsset(getAssets(),
+        //        "fonts/VollkornItalic.ttf");
+        //newFont.setTypeface(face);
+        //newFont.setText("HELLO");
+
 
 
     }
