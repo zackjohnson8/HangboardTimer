@@ -1,12 +1,14 @@
 package com.example.zackj_000.hangboardtimer;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 //TODO(ZACK): Build out the directory buttons into a bottom layout.
@@ -16,6 +18,7 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
 
     private Button buttonStart;
     private Button buttonStop;
+    private ImageButton buttonHome;
     private TextView clockTimeText;
     Handler customHandler = new Handler();
 
@@ -51,10 +54,12 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
 
         buttonStart = findViewById(R.id.basicTimerButtonStart);
         buttonStop = findViewById(R.id.basicTimerButtonStop);
+        buttonHome = findViewById(R.id.buttonHome);
         clockTimeText = findViewById(R.id.basicTimerCountTextView);
 
         buttonStart.setOnClickListener(this);
         buttonStop.setOnClickListener(this);
+        buttonHome.setOnClickListener(this);
 
     }
 
@@ -65,6 +70,12 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
 
         switch(v.getId())
         {
+
+            case R.id.buttonHome:
+                Intent BasicTimerTrainer = new Intent(BasicTimerActivity.this, MainActivity.class);
+                startActivity(BasicTimerTrainer);
+                break;
+
             case R.id.basicTimerButtonStart:
                 if(!timerRunning) {
                     timerRunning = !timerRunning;

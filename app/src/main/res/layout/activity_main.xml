@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="1dp"
     android:layout_marginRight="1dp"
-    android:background="#ffffff"
+    android:background="#999999"
     tools:context="com.example.zackj_000.hangboardtimer.MainActivity">
 
     <LinearLayout

@@ -21,7 +21,7 @@
             android:layout_height="0dp"
             android:layout_weight=".5"
             android:padding="0dp"
-            android:background="@color/colorTimerBackground"
+            android:background="#999999"
             android:orientation="horizontal"
             >
 <!--
@@ -124,7 +124,7 @@
                 android:layout_weight="2"
                 android:textSize="20sp"
                 android:text="@string/startButtonString"
-                android:background="@drawable/start_stop_button"
+                android:background="@drawable/timer_buttons"
                  />
 
             <Button
@@ -136,7 +136,7 @@
                 android:layout_margin=".5dp"
                 android:padding="0dp"
                 android:textSize="20sp"
-                android:background="@drawable/start_stop_button"
+                android:background="@drawable/timer_buttons"
 
                 />
         </LinearLayout>
@@ -147,6 +147,63 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@color/colorTimerBackground">
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navigationBottomLayer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:padding="0dp"
+            android:background="@color/colorTimerBackground"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/buttonHome"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginRight=".25dp"
+                android:padding="0dp"
+                android:background="@drawable/timer_buttons"
+                android:src="@drawable/ic_if_misc__home__1276860"
+                android:
+                />
+
+            <ImageButton
+                android:id="@+id/buttonIntervalTraining"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginRight=".25dp"
+                android:layout_marginLeft=".25dp"
+                android:padding="0dp"
+                android:background="@drawable/timer_buttons"
+                />
+
+
+            <ImageButton
+                android:id="@+id/buttonWeightTraining"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginLeft=".25dp"
+                android:layout_marginRight=".25dp"
+                android:padding="0dp"
+                android:background="@drawable/timer_buttons"
+                />
+
+            <ImageButton
+                android:id="@+id/buttonMaxWeightHangTraining"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginLeft=".25dp"
+                android:padding="0dp"
+                android:background="@drawable/timer_buttons"
+                />
+
         </LinearLayout>
 
 
