@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId())
         {
             case R.id.button1:
-                /*
+
                 Intent IntervalTraining = new Intent(MainActivity.this, IntervalTraining.class);
                 startActivity(IntervalTraining);
-                */
+
                 break;
             case R.id.button2:
                 /*

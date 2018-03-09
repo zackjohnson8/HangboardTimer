@@ -150,10 +150,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/navigationBottomLayer"
+            android:id="@+id/timerBottomLayer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".5"
+            android:layout_weight=".3"
             android:padding="0dp"
             android:background="@color/colorTimerBackground"
             android:orientation="horizontal"
@@ -168,7 +168,6 @@
                 android:padding="0dp"
                 android:background="@drawable/timer_buttons"
                 android:src="@drawable/ic_if_misc__home__1276860"
-                android:
                 />
 
             <ImageButton
