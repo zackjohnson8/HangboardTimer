@@ -22,19 +22,7 @@
             android:background="#999999"
             android:orientation="horizontal"
             >
-            <!--
-                        <Button
-                            android:id="@+id/buttonStopWatch"
-                            android:textColor="#303030"
-                            android:textSize="40sp"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:layout_margin=".5dp"
-                            android:padding="0dp"
-                            android:background="@drawable/start_stop_button"
-                            />
-            -->
+
             <LinearLayout
                 android:id="@+id/BufferLayout"
                 android:layout_width="0dp"
@@ -44,43 +32,9 @@
                 android:background="@color/colorTimerBackground"
                 android:orientation="horizontal">
 
+
             </LinearLayout>
 
-            <!--
-            <Button
-                android:id="@+id/buttonIntervalTraining"
-                android:text="Inter"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-
-            <Button
-                android:id="@+id/buttonWeightTraining"
-                android:text="W"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-            <Button
-                android:id="@+id/buttonMaxWeightHangTraining"
-                android:text="Max"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-                -->
         </LinearLayout>
 
         <LinearLayout
@@ -90,19 +44,34 @@
             android:layout_weight="2"
             android:background="@color/colorTimerBackground"
             android:layout_alignParentTop="true"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             >
+
+            <NumberPicker
+                android:id="@+id/npHangTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:background="#d63737"
+                android:descendantFocusability="blocksDescendants" />
+
+           <!-- <NumberPicker
+                android:id="@+id/npBreakTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5" />
+                -->
 
             <TextView
                 android:id="@+id/basicTimerCountTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="100sp"
                 android:layout_gravity="center"
-                android:textSize="90sp"
-                android:textColor="#ffffff"
+                android:layout_marginTop="100sp"
+                android:layout_weight="1"
                 android:text="0:00.000"
-                />
+                android:textColor="#ffffff"
+                android:textSize="90sp" />
 
         </LinearLayout>
 
