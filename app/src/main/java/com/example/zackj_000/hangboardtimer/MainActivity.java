@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,30);
         tv.setText("Hangboard Tracker");
         tv.setTextColor(Color.parseColor("#FFFFFF"));
-        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/VollkornItalic.ttf");
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/VollkornRegular.ttf");
         tv.setTypeface(typeface);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
