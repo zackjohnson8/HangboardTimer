@@ -62,15 +62,25 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         clockTimeText.setVisibility(View.GONE);
 
         // NumberPicker Handler
-        NumberPicker npHangTime_p = findViewById(R.id.npHangTime);
-        npHangTime_p.setMinValue(0);
-        npHangTime_p.setMaxValue(9);
-        npHangTime_p.setWrapSelectorWheel(false);
+        NumberPicker npHangTimeMin_p = findViewById(R.id.npHangTimeMin);
+        npHangTimeMin_p.setMinValue(0);
+        npHangTimeMin_p.setMaxValue(59);
+        npHangTimeMin_p.setWrapSelectorWheel(false);
 
-        NumberPicker npBreakTime_p = findViewById(R.id.npBreakTime);
-        npBreakTime_p.setMinValue(0);
-        npBreakTime_p.setMaxValue(9);
-        npBreakTime_p.setWrapSelectorWheel(false);
+        NumberPicker npHangTimeSec_p = findViewById(R.id.npHangTimeSec);
+        npHangTimeSec_p.setMinValue(0);
+        npHangTimeSec_p.setMaxValue(59);
+        npHangTimeSec_p.setWrapSelectorWheel(false);
+
+        NumberPicker npBreakTimeMin_p = findViewById(R.id.npBreakTimeMin);
+        npBreakTimeMin_p.setMinValue(0);
+        npBreakTimeMin_p.setMaxValue(59);
+        npBreakTimeMin_p.setWrapSelectorWheel(false);
+
+        NumberPicker npBreakTimeSec_p = findViewById(R.id.npBreakTimeSec);
+        npBreakTimeSec_p.setMinValue(0);
+        npBreakTimeSec_p.setMaxValue(59);
+        npBreakTimeSec_p.setWrapSelectorWheel(false);
 
         /*npHangTime_p.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
