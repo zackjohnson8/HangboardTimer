@@ -5,8 +5,6 @@
     android:id="@+id/Layout_Constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="1dp"
-    android:layout_marginRight="1dp"
     android:background="#999999"
     tools:context="com.example.zackj_000.hangboardtimer.MainActivity">
 
@@ -14,127 +12,63 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/topLinearLayout"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_weight="2">
 
-            <!--<Button
-                android:id="@+id/button1"
-                android:text="@string/buttonUpperLeftText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:textColor="#ffffff"
-                android:layout_weight="2"
+        <Button
+            android:id="@+id/button1"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight=".25"
+            android:background="@color/colorPrimary"
+            android:drawableLeft="@drawable/ic_action_tinted"
+            android:layout_margin="0dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/buttonUpperLeftText"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
-                android:background="@drawable/start_stop_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-                <Button
-                android:id="@+id/button2"
-                android:text="@string/buttonUpperRightText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:textColor="#ffffff"
-                android:background="@drawable/start_stop_button"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />-->
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:backgroundTint="@color/colorPrimary"
-                android:drawableLeft="@drawable/ic_action_tinted"
-                android:drawablePadding="8dp"
-                android:fontFamily="sans-serif"
-                android:stateListAnimator="@null"
-                android:text="@string/buttonUpperLeftText"
-                android:textColor="#fff"
-                android:textSize="12dp" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:backgroundTint="@color/colorPrimary"
-                android:drawableLeft="@drawable/ic_action_tinted"
-                android:drawablePadding="8dp"
-                android:fontFamily="sans-serif"
-                android:stateListAnimator="@null"
-                android:text="@string/buttonUpperRightText"
-                android:textColor="#fff"
-                android:textSize="12dp" />
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".25"
+            android:background="@color/colorPrimaryLevel2"
+            android:drawableLeft="@drawable/ic_action_tinted"
+            android:layout_margin="0dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/buttonUpperRightText"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
 
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".25"
+            android:background="@color/colorPrimaryLevel3"
+            android:drawableLeft="@drawable/ic_action_tinted"
+            android:layout_margin="0dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/buttonBottomLeftText"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_weight="2">
-
-            <!--
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="@string/buttonBottomLeftText"
-                android:textColor="#ffffff"
-
-                android:background="@drawable/start_stop_button"
-                />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="@string/buttonBottomRightText"
-                android:textColor="#ffffff"
-
-                android:background="@drawable/start_stop_button"
-                />
-                -->
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:backgroundTint="@color/colorPrimary"
-                android:drawableLeft="@drawable/ic_action_tinted"
-                android:drawablePadding="8dp"
-                android:fontFamily="sans-serif"
-                android:stateListAnimator="@null"
-                android:text="@string/buttonBottomLeftText"
-                android:textColor="#fff"
-                android:textSize="12dp" />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:backgroundTint="@color/colorPrimary"
-                android:drawableLeft="@drawable/ic_action_tinted"
-                android:drawablePadding="8dp"
-                android:fontFamily="sans-serif"
-                android:stateListAnimator="@null"
-                android:text="@string/buttonBottomRightText"
-                android:textColor="#fff"
-                android:textSize="12dp" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".25"
+            android:background="@color/colorPrimaryLevel4"
+            android:drawableLeft="@drawable/ic_action_tinted"
+            android:layout_margin="0dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/buttonBottomRightText"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 
     </LinearLayout>
 

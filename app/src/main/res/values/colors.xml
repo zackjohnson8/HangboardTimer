@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#ff4800</color>
+    <color name="colorPrimaryLevel2">#d13b00</color>
+    <color name="colorPrimaryLevel3">#ab3000</color>
+    <color name="colorPrimaryLevel4">#892600</color>
     <color name="colorPrimaryDark">#282828</color>
     <color name="colorAccent">#282828</color>
     <color name="colorTimerBackground">#b4c6ff</color>
