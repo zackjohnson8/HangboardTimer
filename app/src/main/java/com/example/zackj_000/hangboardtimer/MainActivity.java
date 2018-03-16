@@ -1,19 +1,23 @@
 package com.example.zackj_000.hangboardtimer;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.app.ActionBar;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+/*
 import android.widget.TextView;
 import android.graphics.Typeface;
 import android.graphics.Color;
 import android.widget.RelativeLayout;
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import android.app.ActionBar;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
+*/
+//AppCompatActivity
+public class MainActivity extends Activity implements View.OnClickListener {
 
     private Button buttonUpperLeft;
     private Button buttonUpperRight;
@@ -30,16 +34,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonBottomLeft = findViewById(R.id.button3);
         buttonBottomRight = findViewById(R.id.button4);
 
-        //View constraintLayout = findViewById(R.id.Layout_Constraint);
-        //constraintLayout.setBackgroundColor(Color.parseColor("#000000"));
-
         buttonUpperLeft.setOnClickListener(this);
         buttonUpperRight.setOnClickListener(this);
         buttonBottomLeft.setOnClickListener(this);
         buttonBottomRight.setOnClickListener(this);
 
 
-
+/* If using the top display bar then use this to modify text
         TextView tv = new TextView(getApplicationContext());
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         tv.setLayoutParams(lp);
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv.setTypeface(typeface);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
-
+*/
     }
 
     @Override

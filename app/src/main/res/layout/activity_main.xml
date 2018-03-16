@@ -21,7 +21,7 @@
             android:layout_alignParentTop="true"
             android:layout_weight="2">
 
-            <Button
+            <!--<Button
                 android:id="@+id/button1"
                 android:text="@string/buttonUpperLeftText"
                 android:layout_width="0dp"
@@ -33,7 +33,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+                <Button
                 android:id="@+id/button2"
                 android:text="@string/buttonUpperRightText"
                 android:layout_width="0dp"
@@ -43,7 +43,37 @@
                 android:background="@drawable/start_stop_button"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />-->
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_action_tinted"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif"
+                android:stateListAnimator="@null"
+                android:text="@string/buttonUpperLeftText"
+                android:textColor="#fff"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_action_tinted"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif"
+                android:stateListAnimator="@null"
+                android:text="@string/buttonUpperRightText"
+                android:textColor="#fff"
+                android:textSize="12dp" />
+
+
+
 
         </LinearLayout>
 
@@ -53,6 +83,7 @@
             android:layout_alignParentBottom="true"
             android:layout_weight="2">
 
+            <!--
             <Button
                 android:id="@+id/button3"
                 android:layout_width="0dp"
@@ -74,66 +105,37 @@
 
                 android:background="@drawable/start_stop_button"
                 />
+                -->
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_action_tinted"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif"
+                android:stateListAnimator="@null"
+                android:text="@string/buttonBottomLeftText"
+                android:textColor="#fff"
+                android:textSize="12dp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:backgroundTint="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_action_tinted"
+                android:drawablePadding="8dp"
+                android:fontFamily="sans-serif"
+                android:stateListAnimator="@null"
+                android:text="@string/buttonBottomRightText"
+                android:textColor="#fff"
+                android:textSize="12dp" />
         </LinearLayout>
 
-        <!--
-        <LinearLayout
-            android:id="@+id/navigationBottomLayer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:padding="0dp"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal"
-            >
-
-            <Button
-                android:id="@+id/buttonStopWatch"
-                android:text="H"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-            <Button
-                android:id="@+id/buttonIntervalTraining"
-                android:text="Inter"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-
-            <Button
-                android:id="@+id/buttonWeightTraining"
-                android:text="W"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-            <Button
-                android:id="@+id/buttonMaxWeightHangTraining"
-                android:text="Max"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-        </LinearLayout>
-        -->
     </LinearLayout>
 
     <android.support.constraint.Guideline
