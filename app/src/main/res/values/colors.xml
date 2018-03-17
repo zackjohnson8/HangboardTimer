@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="upperBarColor">#892600</color>
     <color name="colorPrimary">#ff4800</color>
     <color name="colorPrimaryLevel2">#d13b00</color>
     <color name="colorPrimaryLevel3">#ab3000</color>
