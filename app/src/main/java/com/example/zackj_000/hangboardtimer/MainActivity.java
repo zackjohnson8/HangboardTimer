@@ -2,21 +2,16 @@ package com.example.zackj_000.hangboardtimer;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-/*
-import android.widget.TextView;
 import android.graphics.Typeface;
-import android.graphics.Color;
-import android.widget.RelativeLayout;
-import android.app.ActionBar;
-import android.support.v4.content.res.ResourcesCompat;
+import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
-*/
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,7 +35,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonBottomLeft.setOnClickListener(this);
         buttonBottomRight.setOnClickListener(this);
 
-/* If using the top display bar then use this to modify text
+        // Modify button font family
+        Button txt = findViewById(R.id.button1);
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/VollkornRegular.ttf");
+        txt.setTypeface(font);
+
+        txt = findViewById(R.id.button2);
+        font = Typeface.createFromAsset(getAssets(), "fonts/VollkornRegular.ttf");
+        txt.setTypeface(font);
+
+        txt = findViewById(R.id.button3);
+        font = Typeface.createFromAsset(getAssets(), "fonts/VollkornRegular.ttf");
+        txt.setTypeface(font);
+
+        txt = findViewById(R.id.button4);
+        font = Typeface.createFromAsset(getAssets(), "fonts/VollkornRegular.ttf");
+        txt.setTypeface(font);
+
+        // Font family and options for upper title bar
         TextView tv = new TextView(getApplicationContext());
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
         tv.setLayoutParams(lp);
@@ -51,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv.setTypeface(typeface);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
-*/
+
     }
 
     @Override

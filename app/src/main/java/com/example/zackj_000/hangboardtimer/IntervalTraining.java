@@ -13,6 +13,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,6 +27,9 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private Button buttonStop;
     private ImageButton buttonHome;
     private TextView clockTimeText;
+    private LinearLayout clockTimeLinear;
+    private LinearLayout upperNumberPicker;
+    private LinearLayout lowerNumberPicker;
     Handler customHandler = new Handler();
 
 
@@ -59,7 +63,12 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
         // StopWatch Handler
         clockTimeText = findViewById(R.id.basicTimerCountTextView);
+        clockTimeLinear = findViewById(R.id.clockCountTV);
         clockTimeText.setVisibility(View.GONE);
+
+        upperNumberPicker = findViewById(R.id.hangTimeLinearLayout);
+        lowerNumberPicker = findViewById(R.id.breakTimeLinearLayout);
+
 
         // NumberPicker Handler
         NumberPicker npHangTimeMin_p = findViewById(R.id.npHangTimeMin);
@@ -125,9 +134,17 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
             case R.id.basicTimerButtonStart:
                 if(!timerRunning) {
+
+
+                    activateChoosingTimeLayout();
+
+                    // hide upper and lower number pickers along with children and set the timer to show
                     timerRunning = !timerRunning;
                     buttonStop.setText("STOP");
                     startTimer();
+
+
+
                 }else
                 {
                     clearTimer();
@@ -144,13 +161,30 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                     stopTimer();
                 }else
                 {
-                    clearTimer();
-                    clockTimeText.setText("0:00.000");
+                    //clearTimer();
+                    //clockTimeText.setText("0:00.000");
                 }
                 break;
             default:
                 break;
         }
+
+    }
+
+    private void activateChoosingTimeLayout()
+    {
+
+        // POOF
+        upperNumberPicker.setVisibility(View.GONE);
+        lowerNumberPicker.setVisibility(View.GONE);
+        findViewById(R.id.tvHangTimeContainer).setVisibility(View.GONE);
+        findViewById(R.id.tvMinSecHangTimeContainer).setVisibility(View.GONE);
+        findViewById(R.id.tvBreakTimeContainer).setVisibility(View.GONE);
+        findViewById(R.id.tvMinSecBreakTimeContainer).setVisibility(View.GONE);
+
+        // BING
+        clockTimeText.setVisibility(View.VISIBLE);
+
 
     }
 

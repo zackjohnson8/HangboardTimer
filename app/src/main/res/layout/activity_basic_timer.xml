@@ -24,19 +24,7 @@
             android:background="#999999"
             android:orientation="horizontal"
             >
-<!--
-            <Button
-                android:id="@+id/buttonStopWatch"
-                android:textColor="#303030"
-                android:textSize="40sp"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
--->
+
             <LinearLayout
                 android:id="@+id/BufferLayout"
                 android:layout_width="0dp"
@@ -48,41 +36,6 @@
 
             </LinearLayout>
 
-            <!--
-            <Button
-                android:id="@+id/buttonIntervalTraining"
-                android:text="Inter"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-
-            <Button
-                android:id="@+id/buttonWeightTraining"
-                android:text="W"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-
-            <Button
-                android:id="@+id/buttonMaxWeightHangTraining"
-                android:text="Max"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_margin=".5dp"
-                android:padding="0dp"
-                android:background="@drawable/start_stop_button"
-                />
-                -->
         </LinearLayout>
 
         <LinearLayout
@@ -102,7 +55,7 @@
                 android:layout_marginTop="100sp"
                 android:layout_gravity="center"
                 android:textSize="90sp"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:text="0:00.000"
                 />
 
@@ -152,8 +105,7 @@
         <LinearLayout
             android:id="@+id/timerBottomLayer"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".3"
+            android:layout_height="40sp"
             android:padding="0dp"
             android:background="@color/colorTimerBackground"
             android:orientation="horizontal"
@@ -165,6 +117,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_marginRight=".25dp"
+                android:layout_marginBottom="0dp"
                 android:padding="0dp"
                 android:background="@drawable/timer_buttons"
                 android:src="@drawable/ic_if_misc__home__1276860"
@@ -177,6 +130,7 @@
                 android:layout_weight="2"
                 android:layout_marginRight=".25dp"
                 android:layout_marginLeft=".25dp"
+                android:layout_marginBottom="0dp"
                 android:padding="0dp"
                 android:background="@drawable/timer_buttons"
                 />
@@ -189,6 +143,7 @@
                 android:layout_weight="2"
                 android:layout_marginLeft=".25dp"
                 android:layout_marginRight=".25dp"
+                android:layout_marginBottom="0dp"
                 android:padding="0dp"
                 android:background="@drawable/timer_buttons"
                 />
@@ -199,6 +154,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_marginLeft=".25dp"
+                android:layout_marginBottom="0dp"
                 android:padding="0dp"
                 android:background="@drawable/timer_buttons"
                 />

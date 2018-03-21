@@ -21,11 +21,10 @@
             android:background="@color/colorPrimary"
             android:drawableLeft="@drawable/ic_action_tinted"
             android:layout_margin="0dp"
-            android:fontFamily="sans-serif"
             android:text="@string/buttonUpperLeftText"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/button2"
@@ -35,11 +34,10 @@
             android:background="@color/colorPrimaryLevel2"
             android:drawableLeft="@drawable/ic_action_tinted"
             android:layout_margin="0dp"
-            android:fontFamily="sans-serif"
             android:text="@string/buttonUpperRightText"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="20dp" />
 
 
         <Button
@@ -50,11 +48,10 @@
             android:background="@color/colorPrimaryLevel3"
             android:drawableLeft="@drawable/ic_action_tinted"
             android:layout_margin="0dp"
-            android:fontFamily="sans-serif"
             android:text="@string/buttonBottomLeftText"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/button4"
@@ -64,11 +61,10 @@
             android:background="@color/colorPrimaryLevel4"
             android:drawableLeft="@drawable/ic_action_tinted"
             android:layout_margin="0dp"
-            android:fontFamily="sans-serif"
             android:text="@string/buttonBottomRightText"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textSize="20dp" />
 
     </LinearLayout>
 
