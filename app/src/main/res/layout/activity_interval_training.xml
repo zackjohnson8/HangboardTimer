@@ -233,7 +233,7 @@
 
             <Button
                 android:id="@+id/basicTimerButtonStop"
-                android:text="@string/resetButtonString"
+                android:text="@string/cancelButtonString"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"

@@ -8,4 +8,5 @@
     <string name="stopButtonString">STOP</string>
     <string name="resetButtonString">RESET</string>
     <string name="backButton"></string>
+    <string name="cancelButtonString">CANCEL</string>
 </resources>

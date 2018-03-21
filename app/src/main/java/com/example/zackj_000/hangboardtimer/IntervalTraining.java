@@ -1,7 +1,6 @@
 package com.example.zackj_000.hangboardtimer;
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -91,6 +90,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         npBreakTimeSec_p.setMaxValue(59);
         npBreakTimeSec_p.setWrapSelectorWheel(false);
 
+
         /*npHangTime_p.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
@@ -140,7 +140,6 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
                     // hide upper and lower number pickers along with children and set the timer to show
                     timerRunning = !timerRunning;
-                    buttonStop.setText("STOP");
                     startTimer();
 
 
@@ -150,24 +149,41 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                     clearTimer();
                     startTimer();
                 }
-                //Intent MainActivity = new Intent(BasicTimerActivity.this, MainActivity.class);
-                //startActivity(MainActivity);
+
                 break;
 
             case R.id.basicTimerButtonStop:
                 if(timerRunning) {
+
+                    activateTimerLayout();
+
                     timerRunning = !timerRunning;
-                    buttonStop.setText("RESET");
+                    clearTimer();
+                    clockTimeText.setText("0:00.000");
                     stopTimer();
-                }else
-                {
-                    //clearTimer();
-                    //clockTimeText.setText("0:00.000");
+
                 }
                 break;
             default:
                 break;
         }
+
+    }
+
+
+    private void activateTimerLayout()
+    {
+
+        // BING
+        upperNumberPicker.setVisibility(View.VISIBLE);
+        lowerNumberPicker.setVisibility(View.VISIBLE);
+        findViewById(R.id.tvHangTimeContainer).setVisibility(View.VISIBLE);
+        findViewById(R.id.tvMinSecHangTimeContainer).setVisibility(View.VISIBLE);
+        findViewById(R.id.tvBreakTimeContainer).setVisibility(View.VISIBLE);
+        findViewById(R.id.tvMinSecBreakTimeContainer).setVisibility(View.VISIBLE);
+
+        // POOF
+        clockTimeText.setVisibility(View.GONE);
 
     }
 

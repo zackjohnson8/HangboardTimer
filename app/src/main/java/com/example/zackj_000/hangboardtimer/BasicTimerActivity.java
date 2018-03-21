@@ -1,19 +1,24 @@
 package com.example.zackj_000.hangboardtimer;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 //TODO(ZACK): Build out the directory buttons into a bottom layout.
 //AppCompatActivity
-public class BasicTimerActivity extends Activity implements View.OnClickListener
+public class BasicTimerActivity extends AppCompatActivity implements View.OnClickListener
 {
 
     private Button buttonStart;
@@ -60,6 +65,17 @@ public class BasicTimerActivity extends Activity implements View.OnClickListener
         buttonStart.setOnClickListener(this);
         buttonStop.setOnClickListener(this);
         buttonHome.setOnClickListener(this);
+
+        TextView tv = new TextView(getApplicationContext());
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ActionBar.LayoutParams.WRAP_CONTENT);
+        tv.setLayoutParams(lp);
+        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,30);
+        tv.setText("Stop Watch");
+        tv.setTextColor(Color.parseColor("#FFFFFF"));
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/VollkornRegular.ttf");
+        tv.setTypeface(typeface);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(tv);
 
     }
 
