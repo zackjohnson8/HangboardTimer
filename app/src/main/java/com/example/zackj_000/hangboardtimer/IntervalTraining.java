@@ -21,14 +21,23 @@ import android.widget.TextView;
 //AppCompatActivity AppCompatActivity
 public class IntervalTraining extends AppCompatActivity implements View.OnClickListener
 {
+    final float DEFAULT_WAIT_TIME = 3f;
+
+    private int restMin;
+    private int restSec;
+    private int hangMin;
+    private int hangSec;
+
 
     private Button buttonStart;
     private Button buttonStop;
     private ImageButton buttonHome;
-    private TextView clockTimeText;
+    private AutoResizeTextView clockTimeText;
     private LinearLayout clockTimeLinear;
     private LinearLayout upperNumberPicker;
     private LinearLayout lowerNumberPicker;
+    private LinearLayout colorChangeLayout;
+    private AutoResizeTextView timerMessage;
     Handler customHandler = new Handler();
 
 
@@ -38,10 +47,19 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     long timeSwapBuff = 0L;
     long updateTime = 0L;
     boolean timerRunning = false;
+    boolean needWait = true;
 
     Runnable updateTimerThread = new Runnable() {
         @Override
         public void run() {
+
+            if(needWait)
+            {
+
+                colorChangeLayout.setBackgroundResource(R.color.waitYellow);
+                needWait = !needWait;
+            }
+
             timeInMilli = SystemClock.uptimeMillis()-startTime;
             updateTime = timeSwapBuff+timeInMilli;
             int secs = (int)updateTime/1000;
@@ -65,8 +83,11 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         clockTimeLinear = findViewById(R.id.clockCountTV);
         clockTimeText.setVisibility(View.GONE);
 
+        timerMessage = findViewById(R.id.timerMessage);
+
         upperNumberPicker = findViewById(R.id.hangTimeLinearLayout);
         lowerNumberPicker = findViewById(R.id.breakTimeLinearLayout);
+        colorChangeLayout = findViewById(R.id.basicTimerMainLayout);
 
 
         // NumberPicker Handler
@@ -135,14 +156,16 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
             case R.id.basicTimerButtonStart:
                 if(!timerRunning) {
 
+                    // TODO: 3/22/2018 :
+                    // On start hide the option layout, bring open a clock of some kind(get
+                    // something more advanced than just text edit), add color changes.
+                    // Color changing...
 
-                    activateChoosingTimeLayout();
 
-                    // hide upper and lower number pickers along with children and set the timer to show
+                    activateTimerLayout();
                     timerRunning = !timerRunning;
                     startTimer();
-
-
+                    timerMessage.setText("GET READY");
 
                 }else
                 {
@@ -155,12 +178,16 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
             case R.id.basicTimerButtonStop:
                 if(timerRunning) {
 
-                    activateTimerLayout();
+                    activateChoosingTimeLayout();
 
                     timerRunning = !timerRunning;
                     clearTimer();
                     clockTimeText.setText("0:00.000");
                     stopTimer();
+
+                    // reset values
+                    colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
+                    needWait = true;
 
                 }
                 break;
@@ -174,22 +201,6 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private void activateTimerLayout()
     {
 
-        // BING
-        upperNumberPicker.setVisibility(View.VISIBLE);
-        lowerNumberPicker.setVisibility(View.VISIBLE);
-        findViewById(R.id.tvHangTimeContainer).setVisibility(View.VISIBLE);
-        findViewById(R.id.tvMinSecHangTimeContainer).setVisibility(View.VISIBLE);
-        findViewById(R.id.tvBreakTimeContainer).setVisibility(View.VISIBLE);
-        findViewById(R.id.tvMinSecBreakTimeContainer).setVisibility(View.VISIBLE);
-
-        // POOF
-        clockTimeText.setVisibility(View.GONE);
-
-    }
-
-    private void activateChoosingTimeLayout()
-    {
-
         // POOF
         upperNumberPicker.setVisibility(View.GONE);
         lowerNumberPicker.setVisibility(View.GONE);
@@ -200,7 +211,23 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
         // BING
         clockTimeText.setVisibility(View.VISIBLE);
+        timerMessage.setVisibility(View.VISIBLE);
 
+    }
+
+    private void activateChoosingTimeLayout()
+    {
+        // BING
+        upperNumberPicker.setVisibility(View.VISIBLE);
+        lowerNumberPicker.setVisibility(View.VISIBLE);
+        findViewById(R.id.tvHangTimeContainer).setVisibility(View.VISIBLE);
+        findViewById(R.id.tvMinSecHangTimeContainer).setVisibility(View.VISIBLE);
+        findViewById(R.id.tvBreakTimeContainer).setVisibility(View.VISIBLE);
+        findViewById(R.id.tvMinSecBreakTimeContainer).setVisibility(View.VISIBLE);
+
+        // POOF
+        clockTimeText.setVisibility(View.GONE);
+        timerMessage.setVisibility(View.GONE);
 
     }
 

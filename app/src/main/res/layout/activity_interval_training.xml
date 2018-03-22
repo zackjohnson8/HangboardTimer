@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/white"
         >
 
         <LinearLayout
@@ -18,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="0dp"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             android:orientation="horizontal"
             >
             <TextView
@@ -37,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.6"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             android:layout_alignParentTop="true"
             android:orientation="horizontal"
             >
@@ -64,31 +65,69 @@
             android:id="@+id/clockCountTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             android:layout_alignParentTop="true"
             android:orientation="vertical"
             >
-
+<!--
             <TextView
                 android:id="@+id/basicTimerCountTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="100sp"
-                android:layout_weight="1"
                 android:text="0:00.000"
+                android:maxLines="1"
                 android:textColor="#000000"
                 android:textSize="90sp"
                 android:visibility="gone"
                 />
+-->
 
+            <com.vj.widgets.AutoResizeTextView
+                android:id="@+id/basicTimerCountTextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="0:00.000"
+                android:textColor="#000000"
+                android:textSize="90sp"
+                android:visibility="gone"
+                /> <!-- maximum size -->
+
+
+            <com.vj.widgets.AutoResizeTextView
+                android:id="@+id/timerMessage"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="0:00.000"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                android:visibility="gone"
+                /> <!-- maximum size -->
+            <!--
+            <TextView
+                android:id="@+id/timerMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#000000"
+                android:maxLines="1"
+                android:textSize="60sp"
+                android:visibility="gone"
+
+                />
+            -->
         </LinearLayout>
 
         <LinearLayout
         android:id="@+id/tvMinSecHangTimeContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorTimerBackground"
+        android:background="@color/transparentblack"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         >
@@ -119,7 +158,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".2"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             />
 
         <LinearLayout
@@ -127,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="0dp"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             android:orientation="horizontal"
             >
 
@@ -147,7 +186,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.6"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             android:layout_alignParentTop="true"
             android:orientation="horizontal"
             >
@@ -175,7 +214,7 @@
             android:id="@+id/tvMinSecBreakTimeContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             android:layout_alignParentTop="true"
             android:orientation="horizontal"
             >
@@ -206,7 +245,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             android:layout_alignParentTop="true"
             android:orientation="horizontal"
             >
@@ -217,7 +256,7 @@
             android:id="@+id/basicTimerButtonLayer"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorTimerBackground">
+            android:background="@color/transparentblack">
 
             <Button
                 android:id="@+id/basicTimerButtonStart"
@@ -248,9 +287,8 @@
         <LinearLayout
             android:id="@+id/basicTimerBottomLayer"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/colorTimerBackground">
+            android:layout_height="100dp"
+            android:background="@color/transparentblack">
         </LinearLayout>
 
         <LinearLayout
@@ -259,7 +297,7 @@
             android:layout_height="40sp"
             android:padding="0dp"
             android:layout_marginBottom="0dp"
-            android:background="@color/colorTimerBackground"
+            android:background="@color/transparentblack"
             android:orientation="horizontal"
             >
 

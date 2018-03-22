@@ -9,4 +9,7 @@
     <color name="colorAccent">#282828</color>
     <color name="colorTimerBackground">#ffe7d6</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000</color>
+    <color name="transparentblack">#10000000</color>
+    <color name="waitYellow">#fff700</color>
 </resources>
