@@ -32,12 +32,12 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private Button buttonStart;
     private Button buttonStop;
     private ImageButton buttonHome;
-    private AutoResizeTextView clockTimeText;
+    private TextView clockTimeText;
     private LinearLayout clockTimeLinear;
     private LinearLayout upperNumberPicker;
     private LinearLayout lowerNumberPicker;
     private LinearLayout colorChangeLayout;
-    private AutoResizeTextView timerMessage;
+    private TextView timerMessage;
     Handler customHandler = new Handler();
 
 
