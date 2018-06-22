@@ -21,13 +21,11 @@ import android.widget.TextView;
 //AppCompatActivity AppCompatActivity
 public class IntervalTraining extends AppCompatActivity implements View.OnClickListener
 {
-    final float DEFAULT_WAIT_TIME = 3f;
 
-    private int restMin;
-    private int restSec;
-    private int hangMin;
-    private int hangSec;
-
+    private enum RunningState
+    {
+        RUNNING, WAITING, REST
+    }
 
     private Button buttonStart;
     private Button buttonStop;
@@ -38,37 +36,127 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private LinearLayout lowerNumberPicker;
     private LinearLayout colorChangeLayout;
     private TextView timerMessage;
-    Handler customHandler = new Handler();
 
+    // NUMBER PICKERS
+    private NumberPicker npHangTimeMin_p;
+    private NumberPicker npHangTimeSec_p;
+    private NumberPicker npBreakTimeMin_p;
+    private NumberPicker npBreakTimeSec_p;
 
+    int configWaitTime = 0;
     int extraMinutesTest = 0;
     long startTime = 0L;
     long timeInMilli = 0L;
     long timeSwapBuff = 0L;
     long updateTime = 0L;
     boolean timerRunning = false;
-    boolean needWait = true;
 
+    private int minuteCount;
+    private int secondCount;
+
+    private RunningState runningState_p = RunningState.RUNNING;
+    Handler customHandler = new Handler();
     Runnable updateTimerThread = new Runnable() {
         @Override
         public void run() {
 
-            if(needWait)
+
+            if(runningState_p == RunningState.RUNNING)
+            {
+                timeInMilli = SystemClock.uptimeMillis()-startTime;
+                updateTime = timeSwapBuff+timeInMilli;
+                int secs = (int)updateTime/1000;
+                int mins=(secs/60)+extraMinutesTest;
+                secs%=60;
+                int milliseconds = (int)(updateTime%1000);
+
+                clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
+                customHandler.postDelayed(this,0);
+
+                // Do a check to see if rest hanging RunningState
+                // Compare to both seconds and minutes
+                if(secs >= npHangTimeSec_p.getValue() && mins >= npHangTimeMin_p.getValue())
+                {
+                    runningState_p = RunningState.REST;
+                    clearTimer();
+                    startTimer();
+                    colorChangeLayout.setBackgroundResource(R.color.waitYellow);
+                    timerMessage.setText("Rest");
+                }
+
+            }else if(runningState_p == RunningState.WAITING)
             {
 
+                timeInMilli = SystemClock.uptimeMillis()-startTime;
+                updateTime = timeSwapBuff+timeInMilli;
+                int secs = (int)updateTime/1000;
+                int mins=(secs/60)+extraMinutesTest;
+                secs%=60;
+                int milliseconds = (int)(updateTime%1000);
+
                 colorChangeLayout.setBackgroundResource(R.color.waitYellow);
-                needWait = !needWait;
+
+                if (configWaitTime <= secs)
+                {
+                    runningState_p = RunningState.RUNNING;
+                    clearTimer();
+                    startTimer();
+                    colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
+                    timerMessage.setText("Begin Hang");
+                }
+
+                secs = configWaitTime - secs - 1;
+                milliseconds = 999 - milliseconds;
+
+                clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
+                customHandler.postDelayed(this,0);
+
+            }else if(runningState_p == RunningState.REST)
+            {
+
+                timeInMilli = SystemClock.uptimeMillis()-startTime;
+                updateTime = timeSwapBuff+timeInMilli;
+                int secs = (int)updateTime/1000;
+                int mins=(secs/60)+extraMinutesTest;
+                secs%=60;
+                int milliseconds = (int)(updateTime%1000);
+
+                colorChangeLayout.setBackgroundResource(R.color.waitYellow);
+
+                if (mins >= npBreakTimeMin_p.getValue() && secs >= npBreakTimeSec_p.getValue())
+                {
+                    runningState_p = RunningState.RUNNING;
+                    clearTimer();
+                    startTimer();
+                    colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
+                    timerMessage.setText("Begin Hang");
+                }
+
+                if(secondCount < 0)
+                {
+
+                    if(mins > 0)
+                    {
+                        minuteCount -= 1;
+                        secondCount = 60;
+                    }
+
+                }
+
+                secs = secondCount - secs - 1;
+                milliseconds = 999 - milliseconds;
+                mins = minuteCount;
+
+
+
+
+
+                clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
+                customHandler.postDelayed(this,0);
+
             }
 
-            timeInMilli = SystemClock.uptimeMillis()-startTime;
-            updateTime = timeSwapBuff+timeInMilli;
-            int secs = (int)updateTime/1000;
-            int mins=(secs/60)+extraMinutesTest;
-            secs%=60;
-            int milliseconds = (int)(updateTime%1000);
 
-            clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
-            customHandler.postDelayed(this,0);
         }
     };
 
@@ -91,22 +179,22 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
 
         // NumberPicker Handler
-        NumberPicker npHangTimeMin_p = findViewById(R.id.npHangTimeMin);
+        npHangTimeMin_p = findViewById(R.id.npHangTimeMin);
         npHangTimeMin_p.setMinValue(0);
         npHangTimeMin_p.setMaxValue(59);
         npHangTimeMin_p.setWrapSelectorWheel(false);
 
-        NumberPicker npHangTimeSec_p = findViewById(R.id.npHangTimeSec);
+        npHangTimeSec_p = findViewById(R.id.npHangTimeSec);
         npHangTimeSec_p.setMinValue(0);
         npHangTimeSec_p.setMaxValue(59);
         npHangTimeSec_p.setWrapSelectorWheel(false);
 
-        NumberPicker npBreakTimeMin_p = findViewById(R.id.npBreakTimeMin);
+        npBreakTimeMin_p = findViewById(R.id.npBreakTimeMin);
         npBreakTimeMin_p.setMinValue(0);
         npBreakTimeMin_p.setMaxValue(59);
         npBreakTimeMin_p.setWrapSelectorWheel(false);
 
-        NumberPicker npBreakTimeSec_p = findViewById(R.id.npBreakTimeSec);
+        npBreakTimeSec_p = findViewById(R.id.npBreakTimeSec);
         npBreakTimeSec_p.setMinValue(0);
         npBreakTimeSec_p.setMaxValue(59);
         npBreakTimeSec_p.setWrapSelectorWheel(false);
@@ -139,6 +227,17 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(tv);
 
+        // configured values
+        configWaitTime = MainActivity.getConfigWaitTime();
+
+        if(configWaitTime > 0)
+        {
+            runningState_p = RunningState.WAITING;
+        }else
+        {
+            runningState_p = RunningState.RUNNING;
+        }
+
     }
 
     @Override
@@ -161,11 +260,30 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                     // something more advanced than just text edit), add color changes.
                     // Color changing...
 
+                    minuteCount = npBreakTimeMin_p.getValue();
+                    secondCount = npBreakTimeSec_p.getValue();
 
-                    activateTimerLayout();
-                    timerRunning = !timerRunning;
-                    startTimer();
-                    timerMessage.setText("GET READY");
+                    // Check if set time is > 0
+                    if(npHangTimeMin_p.getValue() > 0 || npHangTimeSec_p.getValue() > 0)
+                    {
+                        activateTimerLayout();
+                        timerRunning = !timerRunning;
+                        startTimer();
+
+                        // begin count down if time > 0
+                        if(configWaitTime > 0)
+                        {
+
+                            timerMessage.setText("GET READY");
+
+                        }else // else there is no reason to wait
+                        {
+
+                            timerMessage.setText("BEGIN HANG");
+
+                        }
+                    }
+
 
                 }else
                 {
@@ -187,7 +305,13 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
                     // reset values
                     colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
-                    needWait = true;
+                    if(configWaitTime > 0)
+                    {
+                        runningState_p = RunningState.WAITING;
+                    }else
+                    {
+                        runningState_p = RunningState.RUNNING;
+                    }
 
                 }
                 break;
@@ -201,7 +325,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private void activateTimerLayout()
     {
 
-        // POOF
+        // POOF: vanish
         upperNumberPicker.setVisibility(View.GONE);
         lowerNumberPicker.setVisibility(View.GONE);
         findViewById(R.id.tvHangTimeContainer).setVisibility(View.GONE);
@@ -209,7 +333,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.tvBreakTimeContainer).setVisibility(View.GONE);
         findViewById(R.id.tvMinSecBreakTimeContainer).setVisibility(View.GONE);
 
-        // BING
+        // BING: appear
         clockTimeText.setVisibility(View.VISIBLE);
         timerMessage.setVisibility(View.VISIBLE);
 
@@ -217,7 +341,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
     private void activateChoosingTimeLayout()
     {
-        // BING
+        // BING: appear
         upperNumberPicker.setVisibility(View.VISIBLE);
         lowerNumberPicker.setVisibility(View.VISIBLE);
         findViewById(R.id.tvHangTimeContainer).setVisibility(View.VISIBLE);
@@ -225,7 +349,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.tvBreakTimeContainer).setVisibility(View.VISIBLE);
         findViewById(R.id.tvMinSecBreakTimeContainer).setVisibility(View.VISIBLE);
 
-        // POOF
+        // POOF: vanish
         clockTimeText.setVisibility(View.GONE);
         timerMessage.setVisibility(View.GONE);
 
