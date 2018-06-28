@@ -27,6 +27,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         RUNNING, WAITING, REST
     }
 
+    // Layout Objects
     private Button buttonStart;
     private Button buttonStop;
     private ImageButton buttonHome;
@@ -36,13 +37,12 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private LinearLayout lowerNumberPicker;
     private LinearLayout colorChangeLayout;
     private TextView timerMessage;
-
-    // NUMBER PICKERS
     private NumberPicker npHangTimeMin_p;
     private NumberPicker npHangTimeSec_p;
     private NumberPicker npBreakTimeMin_p;
     private NumberPicker npBreakTimeSec_p;
 
+    // Timer Parameters
     int configWaitTime = 0;
     int extraMinutesTest = 0;
     long startTime = 0L;
@@ -50,10 +50,11 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     long timeSwapBuff = 0L;
     long updateTime = 0L;
     boolean timerRunning = false;
+    private long minuteCount;
+    private long secondCount;
+    private long milliCount;
 
-    private int minuteCount;
-    private int secondCount;
-
+    // Timer Thread
     private RunningState runningState_p = RunningState.RUNNING;
     Handler customHandler = new Handler();
     Runnable updateTimerThread = new Runnable() {
@@ -61,7 +62,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         public void run() {
 
 
-            if(runningState_p == RunningState.RUNNING)
+            if(runningState_p == RunningState.RUNNING) // hang
             {
                 timeInMilli = SystemClock.uptimeMillis()-startTime;
                 updateTime = timeSwapBuff+timeInMilli;
@@ -84,14 +85,15 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                     timerMessage.setText("Rest");
                 }
 
-            }else if(runningState_p == RunningState.WAITING)
+            }else if(runningState_p == RunningState.WAITING) // wait
             {
 
+                // TODO: if wait is longer than 1 minute it'll break. Just saying
                 timeInMilli = SystemClock.uptimeMillis()-startTime;
                 updateTime = timeSwapBuff+timeInMilli;
                 int secs = (int)updateTime/1000;
-                int mins=(secs/60)+extraMinutesTest;
-                secs%=60;
+                int mins = (secs/60)+extraMinutesTest;
+                secs %= 60;
                 int milliseconds = (int)(updateTime%1000);
 
                 colorChangeLayout.setBackgroundResource(R.color.waitYellow);
@@ -111,45 +113,15 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                 clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
                 customHandler.postDelayed(this,0);
 
-            }else if(runningState_p == RunningState.REST)
+            }else if(runningState_p == RunningState.REST) // break
             {
 
                 timeInMilli = SystemClock.uptimeMillis()-startTime;
-                updateTime = timeSwapBuff+timeInMilli;
-                int secs = (int)updateTime/1000;
-                int mins=(secs/60)+extraMinutesTest;
-                secs%=60;
+                updateTime = (milliCount - (timeSwapBuff+timeInMilli)); // Time difference in time
+                int secs = (int)updateTime/1000; // Convert the difference into seconds
+                int mins = (secs/60); // Then convert to minutes
+                secs %= 60;
                 int milliseconds = (int)(updateTime%1000);
-
-                colorChangeLayout.setBackgroundResource(R.color.waitYellow);
-
-                if (mins >= npBreakTimeMin_p.getValue() && secs >= npBreakTimeSec_p.getValue())
-                {
-                    runningState_p = RunningState.RUNNING;
-                    clearTimer();
-                    startTimer();
-                    colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
-                    timerMessage.setText("Begin Hang");
-                }
-
-                if(secondCount < 0)
-                {
-
-                    if(mins > 0)
-                    {
-                        minuteCount -= 1;
-                        secondCount = 60;
-                    }
-
-                }
-
-                secs = secondCount - secs - 1;
-                milliseconds = 999 - milliseconds;
-                mins = minuteCount;
-
-
-
-
 
                 clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
                 customHandler.postDelayed(this,0);
@@ -199,15 +171,6 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         npBreakTimeSec_p.setMaxValue(59);
         npBreakTimeSec_p.setWrapSelectorWheel(false);
 
-
-        /*npHangTime_p.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                npHangTime_p.setValue(newVal);
-            }
-        });
-        */
-
         // Button Handler
         buttonStart = findViewById(R.id.basicTimerButtonStart);
         buttonStop = findViewById(R.id.basicTimerButtonStop);
@@ -230,6 +193,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         // configured values
         configWaitTime = MainActivity.getConfigWaitTime();
 
+        // Check to see if a default wait time is set
         if(configWaitTime > 0)
         {
             runningState_p = RunningState.WAITING;
@@ -259,9 +223,8 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                     // On start hide the option layout, bring open a clock of some kind(get
                     // something more advanced than just text edit), add color changes.
                     // Color changing...
-
-                    minuteCount = npBreakTimeMin_p.getValue();
-                    secondCount = npBreakTimeSec_p.getValue();
+                    secondCount = (npBreakTimeSec_p.getValue() + (npBreakTimeMin_p.getValue()*60));
+                    milliCount = secondCount * 1000;
 
                     // Check if set time is > 0
                     if(npHangTimeMin_p.getValue() > 0 || npHangTimeSec_p.getValue() > 0)
