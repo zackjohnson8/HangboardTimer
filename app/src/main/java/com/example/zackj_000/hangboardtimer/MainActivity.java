@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        // wait in seconds
         config_waitTime = 5; // TODO: hardcoded wait time; change to JSON file http://tonylukasavage.com/blog/2011/06/03/handling-global-configuration-in-android/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

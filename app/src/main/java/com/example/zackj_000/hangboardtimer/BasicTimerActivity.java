@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-//TODO(ZACK): Build out the directory buttons into a bottom layout.
 //AppCompatActivity
 public class BasicTimerActivity extends AppCompatActivity implements View.OnClickListener
 {
@@ -95,7 +94,7 @@ public class BasicTimerActivity extends AppCompatActivity implements View.OnClic
             case R.id.basicTimerButtonStart:
                 if(!timerRunning) {
                     timerRunning = !timerRunning;
-                    buttonStop.setText("STOP");
+                    buttonStop.setText("PAUSE");
                     startTimer();
                 }else
                 {

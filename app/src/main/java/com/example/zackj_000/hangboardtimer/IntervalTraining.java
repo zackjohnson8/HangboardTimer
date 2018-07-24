@@ -17,7 +17,6 @@ import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-//TODO(ZACK): Build out the directory buttons into a bottom layout.
 //AppCompatActivity AppCompatActivity
 public class IntervalTraining extends AppCompatActivity implements View.OnClickListener
 {
@@ -88,17 +87,18 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
             }else if(runningState_p == RunningState.WAITING) // wait
             {
 
-                // TODO: if wait is longer than 1 minute it'll break. Just saying
+                // Convert background color from color x to color y depending on change in time
+                // Color x, Color y, INT Milliseconds current, INT Milliseconds end time
+                colorChangeUsingTime(R.color.waitYellow, R.color.white, updateTime, configWaitTime);
+
                 timeInMilli = SystemClock.uptimeMillis()-startTime;
-                updateTime = timeSwapBuff+timeInMilli;
+                updateTime = ((configWaitTime * 1000) - (timeSwapBuff+timeInMilli));
                 int secs = (int)updateTime/1000;
-                int mins = (secs/60)+extraMinutesTest;
+                int mins = (secs/60);
                 secs %= 60;
                 int milliseconds = (int)(updateTime%1000);
 
-                colorChangeLayout.setBackgroundResource(R.color.waitYellow);
-
-                if (configWaitTime <= secs)
+                if (secs <= 0 && mins <= 0 && milliseconds <= 20)
                 {
                     runningState_p = RunningState.RUNNING;
                     clearTimer();
@@ -106,9 +106,6 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                     colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
                     timerMessage.setText("Begin Hang");
                 }
-
-                secs = configWaitTime - secs - 1;
-                milliseconds = 999 - milliseconds;
 
                 clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
                 customHandler.postDelayed(this,0);
@@ -123,6 +120,17 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                 secs %= 60;
                 int milliseconds = (int)(updateTime%1000);
 
+                if(secs <= 0 && mins <= 0 && milliseconds <= 20)
+                {
+
+                    runningState_p = RunningState.RUNNING;
+                    colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
+                    timerMessage.setText("Begin Hang");
+                    clearTimer();
+                    startTimer();
+
+                }
+
                 clockTimeText.setText(""+mins+":"+String.format("%02d",secs)+"."+String.format("%03d",milliseconds));
                 customHandler.postDelayed(this,0);
 
@@ -132,6 +140,33 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         }
     };
 
+    // TODO: add own class for color modifications
+    // Assuming time starts at 0 seconds
+    // Color x, Color y, Milliseconds current unsigned long , Milliseconds end time unsigned long
+    private Color colorChangeUsingTime(Color startColor, Color finalColor, int startTimeMilliSec, int endTimeMilliSec)
+    {
+
+        // Based on percentage of time passed convert Color x to Color y
+        //
+        // Find how large change between provided time is
+        int remainingMilliseconds = endTimeMilliSec - startTimeMilliSec;
+
+        // Take time difference and determine how much to change color
+        int hashCode = startColor.
+
+
+        // Return next step in color change
+
+        /*
+            Notes:
+            Taking 2 hex colors and a percentage (from n to constant value) move the current color
+                one step closer to final color
+
+            Difference in provided milliseconds provides integer remainingMilli
+            Knowing how large this gap is, add some value to color
+         */
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
