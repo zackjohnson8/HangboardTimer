@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private LinearLayout upperNumberPicker;
     private LinearLayout lowerNumberPicker;
     private LinearLayout colorChangeLayout;
+    private LinearLayout IntervalTrainingMainLayout;
     private TextView timerMessage;
     private NumberPicker npHangTimeMin_p;
     private NumberPicker npHangTimeSec_p;
@@ -87,10 +89,6 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
             }else if(runningState_p == RunningState.WAITING) // wait
             {
 
-                // Convert background color from color x to color y depending on change in time
-                // Color x, Color y, INT Milliseconds current, INT Milliseconds end time
-                colorChangeUsingTime(R.color.waitYellow, R.color.white, updateTime, configWaitTime);
-
                 timeInMilli = SystemClock.uptimeMillis()-startTime;
                 updateTime = ((configWaitTime * 1000) - (timeSwapBuff+timeInMilli));
                 int secs = (int)updateTime/1000;
@@ -98,11 +96,16 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                 secs %= 60;
                 int milliseconds = (int)(updateTime%1000);
 
+                layerChangeOverTime(colorChangeLayout, (int)(timeSwapBuff+timeInMilli), configWaitTime*1000);
+
+
                 if (secs <= 0 && mins <= 0 && milliseconds <= 20)
                 {
                     runningState_p = RunningState.RUNNING;
                     clearTimer();
                     startTimer();
+                    colorChangeLayout.setAlpha(1.0f);
+                    IntervalTrainingMainLayout.setAlpha(1.0f);
                     colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
                     timerMessage.setText("Begin Hang");
                 }
@@ -140,32 +143,23 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         }
     };
 
-    // TODO: add own class for color modifications
-    // Assuming time starts at 0 seconds
-    // Color x, Color y, Milliseconds current unsigned long , Milliseconds end time unsigned long
-    private Color colorChangeUsingTime(Color startColor, Color finalColor, int startTimeMilliSec, int endTimeMilliSec)
+    //TODO
+    private void layerChangeOverTime(LinearLayout changingLayout, int currentTimeMilliSecs_p, int endTimeMilliSecs_p)
     {
 
-        // Based on percentage of time passed convert Color x to Color y
-        //
-        // Find how large change between provided time is
-        int remainingMilliseconds = endTimeMilliSec - startTimeMilliSec;
+        float timePercentage = currentTimeMilliSecs_p * 100;
+        timePercentage = timePercentage / endTimeMilliSecs_p;
+        timePercentage = 100 - timePercentage;
+        timePercentage = timePercentage / 100;
 
-        // Take time difference and determine how much to change color
-        int hashCode = startColor.
+        //Log.d("Changing COlor:", Float.toString(timePercentage));
 
+        // if current = 1000 and end = 5000, timePercentage = 100 - 20; Opacity should be 80
 
-        // Return next step in color change
-
-        /*
-            Notes:
-            Taking 2 hex colors and a percentage (from n to constant value) move the current color
-                one step closer to final color
-
-            Difference in provided milliseconds provides integer remainingMilli
-            Knowing how large this gap is, add some value to color
-         */
-
+//        if(timePercentage >= 0)
+  //      {
+            changingLayout.setAlpha(timePercentage);
+    //    }
     }
 
     @Override
@@ -182,7 +176,8 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
         upperNumberPicker = findViewById(R.id.hangTimeLinearLayout);
         lowerNumberPicker = findViewById(R.id.breakTimeLinearLayout);
-        colorChangeLayout = findViewById(R.id.basicTimerMainLayout);
+        colorChangeLayout = findViewById(R.id.IntervalTrainingMainLayout);
+        IntervalTrainingMainLayout = findViewById(R.id.IntervalTrainingBackground);
 
 
         // NumberPicker Handler
@@ -272,6 +267,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                         if(configWaitTime > 0)
                         {
 
+                            colorChangeLayout.setBackgroundResource(R.color.waitYellow);
                             timerMessage.setText("GET READY");
 
                         }else // else there is no reason to wait

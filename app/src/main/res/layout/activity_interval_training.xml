@@ -7,7 +7,7 @@
     tools:context="com.example.zackj_000.hangboardtimer.IntervalTraining">
 
     <LinearLayout
-        android:id="@+id/basicTimerMainLayout"
+        android:id="@+id/IntervalTrainingBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -15,6 +15,16 @@
         android:paddingBottom="-5dp"
         android:layout_marginBottom="-2dp"
         android:layout_marginRight="-2dp"
+        >
+    <LinearLayout
+        android:id="@+id/IntervalTrainingMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingBottom="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginRight="0dp"
         >
 
         // Time Label
@@ -340,6 +350,7 @@
         </LinearLayout>
 
 
+    </LinearLayout>
     </LinearLayout>
 
     <android.support.constraint.Guideline
