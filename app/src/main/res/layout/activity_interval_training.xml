@@ -147,6 +147,8 @@
 
         // PADDING
         <LinearLayout
+            android:id="@+id/intervalTrainingPadding1"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".2"
@@ -237,7 +239,7 @@
 
         // PADDING
         <LinearLayout
-            android:id="@+id/BufferLayoutFirst"
+            android:id="@+id/intervalTrainingPadding2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -283,7 +285,7 @@
 
         // PADDING
         <LinearLayout
-            android:id="@+id/basicTimerBottomLayer"
+            android:id="@+id/intervalTrainingPadding3"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="horizontal"
@@ -351,6 +353,7 @@
 
 
     </LinearLayout>
+
     </LinearLayout>
 
     <android.support.constraint.Guideline

@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
@@ -17,6 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 //AppCompatActivity AppCompatActivity
 public class IntervalTraining extends AppCompatActivity implements View.OnClickListener
@@ -42,6 +49,13 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private NumberPicker npHangTimeSec_p;
     private NumberPicker npBreakTimeMin_p;
     private NumberPicker npBreakTimeSec_p;
+
+
+    private LinearLayout padding1;
+    private LinearLayout padding2;
+    private LinearLayout padding3;
+    private List<LinearLayout> layoutChangeList;
+
 
     // Timer Parameters
     int configWaitTime = 0;
@@ -96,7 +110,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                 secs %= 60;
                 int milliseconds = (int)(updateTime%1000);
 
-                layerChangeOverTime(colorChangeLayout, (int)(timeSwapBuff+timeInMilli), configWaitTime*1000);
+                layerChangeOverTime(layoutChangeList, (int)(timeSwapBuff+timeInMilli), configWaitTime*1000);
 
 
                 if (secs <= 0 && mins <= 0 && milliseconds <= 20)
@@ -143,6 +157,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         }
     };
 
+<<<<<<< HEAD
     //TODO
     private void layerChangeOverTime(LinearLayout changingLayout, int currentTimeMilliSecs_p, int endTimeMilliSecs_p)
     {
@@ -156,6 +171,8 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         changingLayout.setAlpha(timePercentage);
     }
 
+=======
+>>>>>>> 82b0aa4281f5ed1f7e5217caa24bd0021bd67e9a
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -225,6 +242,19 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         {
             runningState_p = RunningState.RUNNING;
         }
+
+
+        padding1 = findViewById(R.id.intervalTrainingPadding1);
+        padding2 = findViewById(R.id.intervalTrainingPadding2);
+        padding3 = findViewById(R.id.intervalTrainingPadding3);
+        layoutChangeList = new ArrayList();
+
+        // Add the LinearLayouts
+        layoutChangeList.add(clockTimeLinear);
+        layoutChangeList.add(padding1);
+        layoutChangeList.add(padding2);
+        layoutChangeList.add(padding3);
+
 
     }
 
@@ -363,6 +393,11 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
     private void clearTimer()
     {
 
+        for(int index = 0; index < layoutChangeList.size(); index++)
+        {
+            layoutChangeList.get(index).setAlpha(1.0f);
+        }
+
         startTime = 0L;
         timeInMilli = 0L;
         timeSwapBuff = 0L;
@@ -370,5 +405,32 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
 
     }
 
+    //TODO
+    private void layerChangeOverTime(List<LinearLayout> changingLayout, int currentTimeMilliSecs_p, int endTimeMilliSecs_p)
+    {
+
+        // if current = 1000 and end = 5000, timePercentage = 100 - 20; Opacity should be 80
+        float timePercentage = currentTimeMilliSecs_p * 100;
+        timePercentage = timePercentage / endTimeMilliSecs_p;
+        timePercentage = 100 - timePercentage;
+        timePercentage = timePercentage / 100;
+
+        //
+        if(timePercentage >= 0)
+        {
+            for(int index = 0; index < changingLayout.size(); index++)
+            {
+                changingLayout.get(index).setAlpha(timePercentage);
+            }
+            //changingLayout.setAlpha(timePercentage);
+        }
+    }
+
+    // TODO
+//    private void layoutColorChangeOverTime(List<LinearLayout> changingLayout, )
+//    {
+//
+//
+//    }
 
 }
