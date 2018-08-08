@@ -157,7 +157,6 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         }
     };
 
-<<<<<<< HEAD
     //TODO
     private void layerChangeOverTime(LinearLayout changingLayout, int currentTimeMilliSecs_p, int endTimeMilliSecs_p)
     {
@@ -170,9 +169,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         // if current = 1000 and end = 5000, timePercentage = 100 - 20; Opacity should be 80
         changingLayout.setAlpha(timePercentage);
     }
-
-=======
->>>>>>> 82b0aa4281f5ed1f7e5217caa24bd0021bd67e9a
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
