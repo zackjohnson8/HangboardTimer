@@ -151,15 +151,9 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         timePercentage = timePercentage / endTimeMilliSecs_p;
         timePercentage = 100 - timePercentage;
         timePercentage = timePercentage / 100;
-
-        //Log.d("Changing COlor:", Float.toString(timePercentage));
-
+        
         // if current = 1000 and end = 5000, timePercentage = 100 - 20; Opacity should be 80
-
-//        if(timePercentage >= 0)
-  //      {
-            changingLayout.setAlpha(timePercentage);
-    //    }
+        changingLayout.setAlpha(timePercentage);
     }
 
     @Override
@@ -296,6 +290,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
                     clearTimer();
                     clockTimeText.setText("0:00.000");
                     stopTimer();
+                    colorChangeLayout.setAlpha(1.0f);
 
                     // reset values
                     colorChangeLayout.setBackgroundResource(R.color.colorTimerBackground);
