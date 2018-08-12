@@ -169,7 +169,7 @@ public class IntervalTraining extends AppCompatActivity implements View.OnClickL
         // if current = 1000 and end = 5000, timePercentage = 100 - 20; Opacity should be 80
         changingLayout.setAlpha(timePercentage);
     }
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
